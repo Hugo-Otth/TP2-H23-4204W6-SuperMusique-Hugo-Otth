@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="search">
+        <h3>Ajouter un artiste</h3>
+        <form>
+            <input [(ngModel)] = "artistName" type="text" name="artistName" placeholder="Nom de l'artiste" >
+            <button (click)="getArtist()">Rechercher</button>
+            <button (click)="spotify.clearFavorites()">Vider la liste</button>
+        </form>
+    </div>
+    <div class="display">
+        <h3>Vos artistes</h3>
+        <div class="row">
+            <!-- Liste d'artistes ajoutés aux favoris -->
+            <div *ngFor="let a of spotify.favoriteArtists">
+                <h4>{{a.name}}</h4>
+                <img src="{{a.imageUrl}}" alt="{{a.name}}">
+                <button>Albums</button><button>Concerts</button>
+            </div>
+
+        </div>
+    </div>
+</div>
