@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { Artist } from '../models/artist';
+import { Album } from '../models/album';
 
 const CLIENT_ID : string = "1e546b84d9ee4604acb1b731e16eaa57";
 const CLIENT_SECRET : string = "3cfb4207aa4546dda876c3cc0c234f57";
@@ -68,4 +69,23 @@ export class SpotifyService {
     this.favoriteArtists = [];
     localStorage.setItem("favoriteArtists", JSON.stringify(this.favoriteArtists));
   }
+
+  async getAlbums(artist : Artist): Promise<Album[]> {
+        const httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.spotifyToken
+          })
+        };
+        
+        let x = await lastValueFrom(this.http.get<any>("https://api.spotify.com/v1/artists/" + artist.id + 
+        "/albums?include_groups=album,single", httpOptions));
+        console.log(x);
+        
+        let albums = [];
+        for(let i = 0; i < x.items.length; i++){
+          albums.push(new Album(x.items[i].id, x.items[i].name, x.items[i].images[0].url));
+        }
+        return albums;
+    }
 }

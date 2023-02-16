@@ -29,7 +29,7 @@ import { ShowsComponent } from './shows/shows.component';
     RouterModule.forRoot([
       {path:"", redirectTo: "/artists", pathMatch:"full"},
       {path:"artists", component:ArtistsComponent},
-      {path:"albums", component:AlbumsComponent},
+      {path:"albums/:artistName", component:AlbumsComponent},
       {path:"songs", component:SongsComponent},
       {path:"shows", component:ShowsComponent}
     ]),

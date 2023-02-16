@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Album } from '../models/album';
+import { SpotifyService } from '../services/spotify.service';
 
 @Component({
   selector: 'app-albums',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public spotify : SpotifyService, public route : ActivatedRoute) { }
+  
+  artistName : string | null = null;
+  albums : Album[] = [];
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.spotify.connect();
+    this.artistName = this.route.snapshot.paramMap.get("artistName");
+    this.albums = await this.spotify.getAlbums(await this.spotify.searchArtist(this.artistName!));
   }
 
 }
