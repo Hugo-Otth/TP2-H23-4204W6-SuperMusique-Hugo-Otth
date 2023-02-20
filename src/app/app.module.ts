@@ -1,3 +1,4 @@
+import { BandInTownService } from './services/BandInTown.service';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +13,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SongsComponent } from './songs/songs.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ShowsComponent } from './shows/shows.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -20,18 +22,21 @@ import { ShowsComponent } from './shows/shows.component';
     ArtistsComponent,
     SongsComponent,
     PipesComponent,
-    ShowsComponent,
+    ShowsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    GoogleMapsModule,
     RouterModule.forRoot([
       {path:"", redirectTo: "/artists", pathMatch:"full"},
       {path:"artists", component:ArtistsComponent},
       {path:"albums/:artistName", component:AlbumsComponent},
       {path:"songs", component:SongsComponent},
-      {path:"shows", component:ShowsComponent}
+      {path:"songs/:albumId", component:SongsComponent},
+      {path:"shows", component:ShowsComponent},
+      {path:"shows/:artistName", component:ShowsComponent}
     ]),
     TranslateModule.forRoot({
       loader: {

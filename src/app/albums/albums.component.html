@@ -1,13 +1,13 @@
 <div class="row">
     <div class="albums">
-        <h3>Albums de l'artiste X</h3>
+        <h3>Albums de l'artiste {{artistName}}</h3>
         <div class="row">
 
             <!-- Liste d'albums d'un artiste choisi -->
             <div *ngFor="let a of albums">
                 <h4>{{a.name}}</h4>
                 <img src="{{a.imageUrl}}" alt="album 1">
-                <button>Chansons</button>
+                <a href="/songs/{{a.id}}"><button>Chansons</button></a>
             </div>
 
         </div>

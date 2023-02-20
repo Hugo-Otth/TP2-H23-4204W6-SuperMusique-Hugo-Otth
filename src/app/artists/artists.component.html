@@ -14,7 +14,7 @@
             <div *ngFor="let a of spotify.favoriteArtists">
                 <h4>{{a.name}}</h4>
                 <img src="{{a.imageUrl}}" alt="{{a.name}}">
-                <button >Albums</button><button>Concerts</button>
+                <a [routerLink]="['/albums', a.name]"><button >Albums</button></a><a [routerLink]="['/shows', a.name]"><button>Concerts</button></a>
             </div>
 
         </div>
