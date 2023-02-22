@@ -16,24 +16,25 @@ export class ShowsComponent implements OnInit {
   artistName : string | null = null;
   center : google.maps.LatLngLiteral = {lat:42, lng:-4}
   zoom : number = 5;
-  markerPositions : google.maps.LatLngAltitude[] = [];
+  markerPositions : google.maps.LatLngLiteral[] = [];
   shows : Show[] = [];
 
   constructor(public spotify : SpotifyService, public route : ActivatedRoute, public bandintown : BandInTownService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(){
     this.artistName = this.route.snapshot.paramMap.get("artistName");
-    this.getShows();
+    await this.getShows();
     this.addMarkers();
+    console.log(this.markerPositions.length)
   }
 
   async getShows() : Promise<void>{
     this.shows = await this.bandintown.getEvents(this.artistName!);
   }
 
-  addMarkers(){
+  addMarkers() : void{
     this.shows.forEach(show => {
-      this.markerPositions.push({lat: show.lat, lng: show.lng})
+      this.markerPositions.push({lat: show.lat, lng: show.lng});
     });
   }
 
