@@ -14,6 +14,8 @@ import { SongsComponent } from './songs/songs.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ShowsComponent } from './shows/shows.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { YoutubeplayerComponent } from './youtubeplayer/youtubeplayer.component';
 
 @NgModule({
   declarations: [
@@ -22,19 +24,21 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ArtistsComponent,
     SongsComponent,
     PipesComponent,
-    ShowsComponent
+    ShowsComponent,
+    YoutubeplayerComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     GoogleMapsModule,
+    YouTubePlayerModule,
     RouterModule.forRoot([
       {path:"", redirectTo: "/artists", pathMatch:"full"},
       {path:"artists", component:ArtistsComponent},
       {path:"albums/:artistName", component:AlbumsComponent},
       {path:"songs", component:SongsComponent},
-      {path:"songs/:albumId", component:SongsComponent},
+      {path:"songs/:albumId/:artistName", component:SongsComponent},
       {path:"shows", component:ShowsComponent},
       {path:"shows/:artistName", component:ShowsComponent}
     ]),

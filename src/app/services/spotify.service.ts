@@ -7,6 +7,7 @@ import { Song } from '../models/song';
 
 const CLIENT_ID : string = "1e546b84d9ee4604acb1b731e16eaa57";
 const CLIENT_SECRET : string = "3cfb4207aa4546dda876c3cc0c234f57";
+const API_KEY : string = "AIzaSyDA6hLYo_JBHRbGNdz2smq7X4jtllJ5h4A";
 
 @Injectable({
   providedIn: 'root'
@@ -101,7 +102,7 @@ export class SpotifyService {
         return albums;
     }
 
-    async getSongs(album: Album): Promise<Song[]> {
+    async getSongs(album: Album, artistName : string): Promise<Song[]> {
           const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type': 'application/json',
@@ -110,12 +111,18 @@ export class SpotifyService {
           };
           let x = await lastValueFrom(this.http.get<any>("https://api.spotify.com/v1/albums/" + album.id, httpOptions));
           console.log(x);
-          
+        
           let songs : Song[] = [];
           for(let i = 0; i < x.tracks.items.length; i++){
-            songs.push(new Song (x.tracks.items[i].id, x.tracks.items[i].name));
+            let videoId = await this.youtubeRequest(artistName + ' - ' + x.tracks.items[i].name);
+            songs.push(new Song (x.tracks.items[i].id, x.tracks.items[i].name, videoId.toString()));
           }
           return songs;
       }
-      
+
+      async youtubeRequest(songName : string) : Promise<string>{
+        let x = await lastValueFrom(this.http.get<any>('https://www.googleapis.com/youtube/v3/search?type=video&part=id&maxResults=1&key=' + API_KEY + '&q=' + Artist.name + ' - ' + songName));
+        console.log(x);
+        return x.items[0].id.videoId;
+      }
 }

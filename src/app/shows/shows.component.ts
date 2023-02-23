@@ -14,8 +14,8 @@ import { SpotifyService } from '../services/spotify.service';
 export class ShowsComponent implements OnInit {
   
   artistName : string | null = null;
-  center : google.maps.LatLngLiteral = {lat:42, lng:-4}
-  zoom : number = 5;
+  center : google.maps.LatLngLiteral = {lat:42, lng:-45}
+  zoom : number = 3;
   markerPositions : google.maps.LatLngLiteral[] = [];
   shows : Show[] = [];
 

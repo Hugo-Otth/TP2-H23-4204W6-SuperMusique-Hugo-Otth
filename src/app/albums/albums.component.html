@@ -7,7 +7,7 @@
             <div *ngFor="let a of albums">
                 <h4>{{a.name}}</h4>
                 <img src="{{a.imageUrl}}" alt="album 1">
-                <a href="/songs/{{a.id}}"><button>Chansons</button></a>
+                <a [routerLink]="['/songs', a.id, artistName]"><button>Chansons</button></a>
             </div>
 
         </div>
