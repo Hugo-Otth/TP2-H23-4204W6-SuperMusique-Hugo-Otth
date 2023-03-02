@@ -3,8 +3,8 @@
       <div><a href="/artists">J'ai yoink le template de l'enseignant</a></div>
       <div class="spacer"></div>
       <div>
-          <select name="language" id="language">
-              <option value="fr-ca">Français</option>
+          <select name="language" [(ngModel)]="language" id="language" (click)="changeLanguage()">
+              <option value="fr-ca" >Français</option>
               <option value="en-us">English</option>
           </select>
       </div>
