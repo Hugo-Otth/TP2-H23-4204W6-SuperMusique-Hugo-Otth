@@ -1,4 +1,4 @@
-<h3>Chansons de l'album {{albumName}}</h3>
+<h3><span translate>songs.text1</span> {{albumName}}</h3>
     <div class="row">
         <div class="youtubePlayer">
             <app-youtubeplayer [videoId]="videoId"></app-youtubeplayer>
@@ -9,7 +9,7 @@
                 <!-- Liste de chansons d'un album choisi -->
                 <div *ngFor="let s of songs">
                     <p>{{s.name}}</p><br>
-                    <button (click)="setCurrentSong(s.id)">Jouer</button>
+                    <button (click)="setCurrentSong(s.name)"><span translate>songs.text2</span></button>
                 </div>
             </div>
         </div>

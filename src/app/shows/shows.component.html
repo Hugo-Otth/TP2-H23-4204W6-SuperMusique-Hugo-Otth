@@ -1,4 +1,4 @@
-<h3>Concerts de l'artiste {{artistName}}</h3>
+<h3><span translate>shows.text1</span> {{artistName}}</h3>
     <div class="row">
         <google-map [center]="center" [zoom]="zoom" [width]="990" class="map">
             <map-marker *ngFor="let m of markerPositions" [position]="m"></map-marker>

@@ -2,9 +2,28 @@
     "artists":{
       "text1":"Add an artist ",
       "text2":"Search",
-      "text3":"your artists",
+      "text3":"Your artists",
       "text4":"Shows",
       "text5":"Empty the list"
+    },
+
+    "albums":{
+      "text1":"Albums of ",
+      "text2":"Songs"
+    },
+
+    "shows":{
+      "text1":"Shows of "
+    },
+
+    "songs":{
+      "text1":"Chansons de l'album ",
+      "text2":"Play"
+    },
+
+    "app":{
+      "text1":"I did NOT steal the teachers template ",
+      "text2":"All rights reserved to Spotify, BandsInTown et Google"
     }
   }
   

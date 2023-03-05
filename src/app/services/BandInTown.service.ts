@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Artist } from '../models/artist';
 import { Show } from '../models/show';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';

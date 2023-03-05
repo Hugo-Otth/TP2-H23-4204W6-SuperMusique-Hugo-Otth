@@ -8,12 +8,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'TP2-H23-4204W6-SuperMusique-Hugo-Otth';
-  language : string = "fr";
+  language : string = "fr-ca";
+  
 
   constructor(public translator : TranslateService) {
     translator.setDefaultLang(this.language);
   }
-
   changeLanguage():void{
     this.translator.use(this.language);
   }

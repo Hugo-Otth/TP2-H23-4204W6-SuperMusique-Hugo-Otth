@@ -114,14 +114,13 @@ export class SpotifyService {
         
           let songs : Song[] = [];
           for(let i = 0; i < x.tracks.items.length; i++){
-            let videoId = await this.youtubeRequest(artistName + ' - ' + x.tracks.items[i].name);
-            songs.push(new Song (x.tracks.items[i].id, x.tracks.items[i].name, videoId.toString()));
+            songs.push(new Song (x.tracks.items[i].id, x.tracks.items[i].name));
           }
           return songs;
       }
 
-      async youtubeRequest(songName : string) : Promise<string>{
-        let x = await lastValueFrom(this.http.get<any>('https://www.googleapis.com/youtube/v3/search?type=video&part=id&maxResults=1&key=' + API_KEY + '&q=' + Artist.name + ' - ' + songName));
+      async youtubeRequest(songName : string, artistName : string) : Promise<string>{
+        let x = await lastValueFrom(this.http.get<any>('https://www.googleapis.com/youtube/v3/search?type=video&part=id&maxResults=1&key=' + API_KEY + '&q=' + artistName + ' - ' + songName));
         console.log(x);
         return x.items[0].id.videoId;
       }

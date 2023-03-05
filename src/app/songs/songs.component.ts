@@ -33,18 +33,15 @@ export class SongsComponent implements OnInit {
     this.album = await this.spotify.searchAlbum(this.albumId!);
     this.albumName = this.album.name;
     await this.getSongs();
-    this.videoId = this.songs[0].videoId;
+    this.videoId = await this.spotify.youtubeRequest(this.songs[0].name, this.artistName!)
   }
 
   async getSongs() : Promise<void>{
     this.songs = await this.spotify.getSongs(this.album!, this.artistName!);
   }
 
-  async setCurrentSong(songId : string) : Promise<void>{
-    for(const song of this.songs){
-      if(song.id == songId){
-        this.videoId = song.videoId;
-      }
-    }
+  async setCurrentSong(songName : string) : Promise<void>{
+    this.videoId = await this.spotify.youtubeRequest(songName, this.artistName!)
+
   }
 }

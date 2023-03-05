@@ -16,6 +16,7 @@ import { ShowsComponent } from './shows/shows.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { YoutubeplayerComponent } from './youtubeplayer/youtubeplayer.component';
+import { YoutubeService } from './services/youtube.service';
 
 @NgModule({
   declarations: [

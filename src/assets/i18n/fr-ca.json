@@ -5,6 +5,25 @@
       "text3":"Vos artistes",
       "text4":"Concerts",
       "text5":"Vider la liste"
+    },
+
+    "albums":{
+      "text1":"Albums de l'artiste ",
+      "text2":"Chansons"
+    },
+
+    "shows":{
+      "text1":"Concerts de l'artiste "
+    },
+
+    "songs":{
+      "text1":"Chansons de l'album ",
+      "text2":"Jouer"
+    },
+
+    "app":{
+      "text1":"Je n'ais PAS yoink le template du prof",
+      "text2":"Tous droits réservés à Spotify, BandsInTown et Google"
     }
   }
-  
+ 
